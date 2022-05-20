@@ -1,0 +1,117 @@
+
+.col-1 h3{
+    font-size: 30px;
+    color: #707070;
+    font-weight: 100;
+    margin: 20px 0 10px
+}
+.col-1 p{
+    font-size: 16px;
+    color: #b7b7b7;
+    font-weight: 100;
+}
+.col-1 h4{
+    font-size: 16px;
+   margin-bottom: 30px ;
+}
+
+button{
+    width: 140px;
+    border: 0;
+    padding: 12px 10px;
+    outline: none;
+    color: #fff;
+    background: #1C6BA4;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: width 0.5s;
+}
+button img{
+    width: 30px;
+    display: none;
+}
+button:hover img{
+    display: block;
+}
+button:hover{
+    width: 160px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.col-1::after{
+    content: '';
+    width: 10px;
+    height: 57%;
+  background: linear-gradient( #DCEDF9 50%, #1C6BA4);
+    position: absolute;
+    left: -40px;
+    top: 8px;
+}
+.col-2{
+    position: relative;
+/*     left: 90px; */
+    flex-basis: 43%;
+    display: flex;
+    align-items: center;
+}
+.col-2 .controller{
+    width: 30%;  
+}
+@media only screen and (max-width:700px){
+    
+    nav ul{
+        width: 100%;
+        background: linear-gradient( #DCEDF9, #1C6BA4);
+        position: absolute;
+        top: 30px;
+        right: 0;
+        z-index: 2;
+    }
+    nav ul li{
+        display: block;
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+    nav ul li a{
+        color: #fff;
+    }
+    .menu-icon{
+        display: block;
+    }
+    #menuList{
+        overflow: hidden;
+        transition: 0.5s;
+    }
+    .row{
+        flex-direction: column-reverse;
+        margin: 50px 0;
+    }
+    .col-2{
+        flex-basis: 100%;
+        margin-bottom: 50px;
+      left: 15%;
+    }
+    .col-2 .controller{
+        width: 77%; 
+       
+    }
+ .col-2 img{
+   width: 70%;
+   height:70%;
+ }
+    .col-1{
+        flex-basis: 100%;
+      left: 0px;
+      align-items: center;
+    }
+    .col-1 h2{
+        font-size: 35px;
+    }
+    .col-1 h3{
+        font-size: 15px;
+    }
+    .col-1 h4{
+        font-size: 15px;
+    }
+}

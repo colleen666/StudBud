@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StudBud</title>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+      <div class="navbar">
+          <nav>
+              <ul id="menuList">
+                  <li><a href="">Home</a></li>
+                  <li><a href="">Sign up</a></li>
+                  <li><a href="">Log in</a></li>
+
+              </ul>
+          </nav>
+         <img src="images/menu.png" class="menu-icon" onclick="togglemenu()">
+      </div>
+  
+       <div class="row">
+
+          <div class="col-1">
+            
+              <h2>Hello,<br>and Welcome Here !</h2>
+              <h3> Best app to manage your individual study sesssion.</h3>
+             <p>Start to explore your fun study experience in StudBud!</p>
+             <h4> 
+             </h4>
+         
+
+              <button type="button">Started Now<img src="images/arrow.png"></button>
+          </div>
+
+            
+          <div class="col-2">
+          <img src="images/controller.png" alt = "this is a study img"/>
+                 
+  <script src="script.js"></script>
+</body>
+
+</html>
