@@ -1,0 +1,213 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+    box-sizing: border-box;
+}
+
+a{
+    text-decoration: none;
+    color: #5a5a5a;
+}
+img{
+    cursor: pointer;
+}
+
+.flex-div{
+    display: flex;
+    align-items: center;
+}
+
+nav{
+    padding: 10px 2%;
+    justify-content: space-between;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    background:#1C6BA4;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+.nav-right img{
+    width: 22px;
+    margin-right: 30px;
+}
+.nav-right .user-icon{
+    width: 35px;
+    margin-right: 0;
+}
+.nav-left .menu-icon{
+    width: 22px;
+    margin-right: 40px;
+}
+.nav-left .logo{
+    width: 30px;
+}
+.nav-middle .mic-icon{
+    width: 16px;
+}
+.nav-middle .search-box{
+    border: 1px solid #fff;
+    background: #fff;
+    margin-right: 15px;
+    padding: 8px 12px;
+    border-radius: 25px;
+}
+.nav-middle .search-box input{
+    width: 400px;
+    border: 0;
+    outline: 0;
+    background: #fff;
+}
+.nav-middle .search-box  img{
+    width: 15px;
+}
+
+
+/* --------------nav end here---------- */
+
+
+.sidebar{
+    background: #DCEDF9;
+    width: 15%;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    padding-left: 2%;
+    padding-top: 100px;
+}
+.small-sidebar{
+    width: 6%;
+}
+.iconbtn{
+  width: 30px;  
+  height: 30px;
+  text-decoration: none;
+  margin-bottom: 50px;
+  position: relative;
+  font-size: 20px;
+  color: #5a5a5a;
+}
+
+.shortcut-links a .iconbtn{
+    width: 20px;
+    margin-right: 20px;
+}
+.shortcut-links a p{
+    margin-left: 20px;
+}
+.shortcut-links a{
+    display: flex;
+    align-items: center;
+    margin-bottom: 50px;
+    width: fit-content;
+    flex-wrap: wrap;
+}
+
+.shortcut-links .iconbtn:hover{
+    color: #1C6BA4;
+    transition: 0.5s;
+}
+
+.sidebar hr{
+    border: 0;
+    height: 1px;
+    background: #ccc;
+    width: 85%;
+}
+
+.small-sidebar a p{
+    display: none;
+}
+.small-sidebar h3{
+    display: none;
+}
+.small-sidebar hr{
+    width: 50%;
+    margin-bottom: 25px;
+}
+
+
+@media (max-width: 900px){
+    .nav-right img{
+        width: 20px;
+        margin-right: 25px;
+    }
+    .nav-right .user-icon{
+         width: 30px;
+         margin-right: 5px;
+    }
+    .nav-middle .mic-icon{
+        display: none;
+    }
+    .nav-left .menu-icon{
+        width: 20px;
+        margin-right: 25px;
+        margin-left: 10px;
+    }
+    .nav-left .logo{
+        width: 27px;
+    }
+    .menu-icon{
+        width: 50%;
+    }
+    .sidebar{
+        width: 30%;
+  
+    }
+    .small-sidebar{
+        width: 10%;
+    }
+    .iconbtn{
+        width: 30px;  
+        height: 30px;
+        text-decoration: none;
+        margin-bottom: 50px;
+        position: relative;
+        font-size: 15px;
+      }
+    .shortcut-links .iconbtn{
+        width: 20px;
+        margin-left: 5px;
+
+    }
+  
+
+    .shortcut-links a{
+        display: flex;
+        align-items: center;
+        margin-bottom: 30px;
+        width: fit-content;
+        flex-wrap: wrap;
+    }
+
+    .sidebar hr{
+        margin-left: 5px;
+    }
+
+
+    .small-sidebar a p{
+        display: none;
+    }
+    .small-sidebar h3{
+        display: none;
+    }
+    .small-sidebar hr{
+        width: 50%;
+        margin-bottom: 25px;
+    }
+    .large-container, .container{
+        padding-left: 5%;
+        padding-right: 5%;
+    }
+
+    /* -------dor search box ----- */
+    
+    .nav-middle .search-box input{
+       width: 200px;
+    }
+    // .search-box input:focus{
+        
+    // }
+}
+
+

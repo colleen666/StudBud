@@ -1,3 +1,4 @@
+//Overall menu list funtion
 var menuList = document.getElementById("menuList");
         
 menuList.style.maxHeight = "0px";
@@ -15,3 +16,10 @@ function togglemenu(){
     
 }
 
+// function btnClicked(){
+//     document.location.href="signup.html";
+// }
+
+// function myFunction() {
+//     document.getElementById("demo").click().location.href="home.html";
+// }
