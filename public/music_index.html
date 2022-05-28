@@ -14,7 +14,7 @@
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans&display=swap" rel="stylesheet">
     <!-- Stylesheet -->
-    <link rel="stylesheet" href="styles/music_style.css" />
+    <link rel="stylesheet" href="styles/music_style.scss" />
   </head>
   <body>
     <a href="home.html">
@@ -22,18 +22,59 @@
     </a>
     <div class="music-player">
       <h3>Music Player</h3>
-      <button id="playlist">
+      <!-- <button id="playlist">
         <i class="fa-solid fa-angle-down"></i>
-      </button>
-      <img id="song-image" src="images/make-me-move.jpg" />
-      <div class="song-details">
-        <p id="song-name">Make Me Move</p>
-        <p id="song-artist">Culture Code</p>
+      </button> -->
+
+      <div class="song-tile is-active">
+        <img id="song-image" src="images/make-me-move.jpg" />
+        <div class="song-details">
+          <p id="song-name">Make Me Move</p>
+          <p id="song-artist">Culture Code</p>
+        </div>
+        <audio src="make-me-move.mp3"></audio>
       </div>
+
+      <div class="song-tile">
+        <img id="song-image" src="images/need-you-now.jpg" />
+        <div class="song-details">
+          <p id="song-name">Need You Now</p>
+          <p id="song-artist">Venemy</p>
+        </div>
+        <audio src="need-you-now.mp3"></audio>
+      </div>
+
+      <div class="song-tile">
+        <img id="song-image" src="images/on-on.jpg" />
+        <div class="song-details">
+          <p id="song-name">On&On</p>
+          <p id="song-artist">Cartoon</p>
+        </div>
+        <audio src="on-on.mp3"></audio>
+      </div>
+
+      <div class="song-tile">
+        <img id="song-image" src="images/where-we-started.jpg" />
+        <div class="song-details">
+          <p id="song-name">Where We Started</p>
+          <p id="song-artist">Lost Sky</p>
+        </div>
+        <audio src="where-we-started.mp3"></audio>
+      </div>
+
+      <div class="song-tile">
+        <img id="song-image" src="images/throne.jpg" />
+        <div class="song-details">
+          <p id="song-name">Throne</p>
+          <p id="song-artist">Rival</p>
+        </div>
+        <audio src="throne.mp3"></audio>
+      </div>
+
       <div class="player-options">
-        <button id="shuffle">
+        <!-- <button id="shuffle">
           <i class="fa-solid fa-shuffle"></i>
-        </button>
+        </button> -->
         <button id="prev">
           <i class="fa-solid fa-backward-step"></i>
         </button>
@@ -46,24 +87,25 @@
         <button id="next">
           <i class="fa-solid fa-forward-step"></i>
         </button>
-        <button id="repeat">
+        <!-- <button id="repeat">
           <i class="fa-solid fa-repeat"></i>
-        </button>
+        </button> -->
       </div>
-      <audio id="audio" preload="metadata"></audio>
+
       <div id="progress-bar">
         <div id="current-progress"></div>
       </div>
+
       <div class="time-container">
         <span id="current-time">0:00</span>
         <span id="max-duration">0:00</span>
       </div>
-      <div id="playlist-container" class="hide">
+      <!-- <div id="playlist-container" class="hide">
         <button id="close-button">
           <i class="fa-solid fa-xmark"></i>
         </button>
         <ul id="playlist-songs"></ul>
-      </div>
+      </div> -->
     </div>
     <!-- Script -->
     <script src="scripts/music.js"></script>

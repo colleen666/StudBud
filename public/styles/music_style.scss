@@ -44,8 +44,15 @@ img {
 #playlist {
   float: right;
 }
+.song-tile {
+  display: none;
+}
+.song-tile.is-active {
+  display: block;
+}
+
 .song-details {
-  font-family: "Poppins", sans-serif;
+  font-family: sans-serif;
   text-align: center;
 }
 .song-details #song-name {

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Timer</title>
+   <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans&display=swap" rel="stylesheet">
+   <script src="https://kit.fontawesome.com/6bfda3c57a.js" crossorigin="anonymous"></script>
+  <link href="styles/timer.scss" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+     <a href="home.html">
+      <i class="fa-solid fa-angle-left"></i>
+    </a>
+    <h2> Pomodoro Timer</h2>
+    
+<!--   Create a container contains everything for the timer. -->
+<div class="container">
+
+  
+<!--   Create a outerring displaying the progress bar. -->
+  <div class="outerRing">
+    
+<!--    timer div to display the Countdown, Start/Stop and the Settings button. -->
+    <div class="timer">
+<!--       The time div displays the countdown, with minutes and seconds <span>. -->
+       <div id="time">
+        <span id="minutes">25</span>
+        <span id="colon">:</span>
+        <span id="seconds">00</span>
+      </div>
+      <div id="stsp">START</div>
+      <span id="setting"><i class="fas fa-cog"></i></span>
+    </div>
+  </div>
+</div>
+  <script src="scripts/timer.js"></script>
+</body>
+
+</html>
