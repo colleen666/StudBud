@@ -1,2 +1,3 @@
 # StudBud
-Assessment 3
+##This is the StudBud project for Assessment 3 Web Prototype.
+###This web application contains 6 webpages, the initial home page(which called index.html in html, styles.scss in styles, scripts.js in scripts), sign up page, log in page, main home page, music page and timer page. Each of these pages contains some curial funtions of this application. 
