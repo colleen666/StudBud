@@ -121,15 +121,21 @@ form label{
 .row input{
     margin-right: 6px;
 }
-.col-2 form button{
+a{
+    text-decoration: none;
+
+}
+.button{
     padding: 10px;
     border-radius: 4px;
     border: 1px solid#1C6BA4;
     outline: none;
     display: block;
-    width: 100%;
+    width: 140px;
     margin: 18px 0 10px;
     background: #1C6BA4;
     color: #fff;
     cursor: pointer;
+    text-align: center;
+    margin-left: 25%;
 }

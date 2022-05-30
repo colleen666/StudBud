@@ -68,7 +68,11 @@ nav ul li a:hover{
    margin-bottom: 30px ;
 }
 
-button{
+a{
+    text-decoration: none;
+}
+
+.button{
     width: 140px;
     border: 0;
     padding: 12px 10px;
@@ -79,14 +83,14 @@ button{
     cursor: pointer;
     transition: width 0.5s;
 }
-button img{
+.button img{
     width: 30px;
     display: none;
 }
-button:hover img{
+.button:hover img{
     display: block;
 }
-button:hover{
+.button:hover{
     width: 160px;
     display: flex;
     align-items: center;
