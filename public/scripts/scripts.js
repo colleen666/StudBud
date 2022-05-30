@@ -15,11 +15,3 @@ function togglemenu(){
         }
     
 }
-
-// function btnClicked(){
-//     document.location.href="signup.html";
-// }
-
-// function myFunction() {
-//     document.getElementById("demo").click().location.href="home.html";
-// }

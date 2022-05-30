@@ -14,58 +14,158 @@
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans&display=swap" rel="stylesheet">
     <!-- Stylesheet -->
-    <link rel="stylesheet" href="styles/test.scss"/>
+    <link rel="stylesheet" href="styles/music.scss"/>
   </head>
+
   <body>
     <a href="home.html">
       <i class="fa-solid fa-angle-left"></i>
     </a>
-    <div class="music-player">
-      <h3>Music Player</h3>
-      <button id="playlist">
-        <i class="fa-solid fa-angle-down"></i>
-      </button>
-      <img id="song-image" src="images/make-me-move.jpg" />
-      <div class="song-details">
-        <p id="song-name">Make Me Move</p>
-        <p id="song-artist">Culture Code</p>
+    <div class="container">
+    <div class="player">
+      <div class="player__header">
+  
+        <div class="player__img player__img--absolute slider">
+  
+          <button class="player__button player__button--absolute--nw playlist">
+  <img src="images/menuw.png" alt="play-list-icon" >
+ </button>
+  
+          <button class="player__button player__button--absolute--center play">
+  
+            <img src="images/bi_play-fill.png" alt="play-icon">
+            <img src="images/play.png" alt="pause-icon">
+  
+          </button>
+  
+          <div class="slider__content">
+  
+            <img class="img slider__img" src="images/where-we-started.jpg" alt="cover">
+            <img class="img slider__img" src="images/throne.jpg" alt="cover">
+            <img class="img slider__img" src="images/on-on.jpg" alt="cover">
+            <img class="img slider__img" src="images/need-you-now.jpg" alt="cover">
+
+  
+          </div>
+  
+        </div>
+  
+        <div class="player__controls">
+  
+          <button class="player__button back">
+  
+            <img class="img" src="images/Play back.png" alt="back-icon">
+  
+          </button>
+          
+          <p class="player__context slider__context">
+  
+            <strong class="slider__name"></strong>
+            <span class="player__title slider__title"></span>
+  
+          </p>
+  
+          <button class="player__button next">
+  
+            <img class="img" src="images/Play next.png" alt="next-icon">
+  
+          </button>
+  
+          <div class="progres">
+  
+            <div class="progres__filled"></div>
+  
+          </div>
+  
+        </div>
+  
       </div>
-      <div class="player-options">
-        <button id="shuffle">
-          <i class="fa-solid fa-shuffle"></i>
-        </button>
-        <button id="prev">
-          <i class="fa-solid fa-backward-step"></i>
-        </button>
-        <button id="play">
-          <i class="fa-solid fa-play"></i>
-        </button>
-        <button id="pause" class="hide">
-          <i class="fa-solid fa-pause"></i>
-        </button>
-        <button id="next">
-          <i class="fa-solid fa-forward-step"></i>
-        </button>
-        <button id="repeat">
-          <i class="fa-solid fa-repeat"></i>
-        </button>
-      </div>
-      <audio id="audio" preload="metadata"></audio>
-      <div id="progress-bar">
-        <div id="current-progress"></div>
-      </div>
-      <div class="time-container">
-        <span id="current-time">0:00</span>
-        <span id="max-duration">0:00</span>
-      </div>
-      <div id="playlist-container" class="hide">
-        <button id="close-button">
-          <i class="fa-solid fa-xmark"></i>
-        </button>
-        <ul id="playlist-songs"></ul>
-      </div>
+  
+      <ul class="player__playlist list">
+  
+        <li class="player__song">
+  
+          <img class="player__img img" src="images/where-we-started.jpg" alt="cover">
+  
+          <p class="player__context">
+  
+            <b class="player__song-name">Where we started</b>
+            <span class="flex">
+  
+              <span class="player__title">Lost Sky</span>
+              <span class="player__song-time"></span>
+  
+            </span>
+  
+          </p>
+  
+          <audio class="audio" src="where-we-started.mp3"></audio>
+  
+        </li>
+  
+      
+  
+        <li class="player__song">
+  
+          <img class="player__img img" src="images/throne.jpg" alt="cover">
+  
+          <p class="player__context">
+  
+            <b class="player__song-name">Throne</b>
+            <span class="flex">
+  
+              <span class="player__title">Rival</span>
+              <span class="player__song-time"></span>
+  
+            </span>
+            
+          </p>
+  
+          <audio class="audio" src="throne.mp3"></audio>
+  
+        </li>
+  
+        <li class="player__song">
+  
+          <img class="player__img img" src="images/on-on.jpg" alt="cover">
+  
+          <p class="player__context ">
+  
+            <b class="player__song-name">On & On</b>
+            <span class="flex">
+  
+              <span class="player__title">Cartoon</span>
+              <span class="player__song-time"></span>
+  
+            </span>
+  
+          </p>
+  
+          <audio class="audio" src="on-on.mp3"></audio>
+  
+        </li>
+        <li class="player__song">
+  
+          <img class="player__img img" src="images/need-you-now.jpg" alt="cover">
+  
+          <p class="player__context ">
+  
+            <b class="player__song-name">Need You Now</b>
+            <span class="flex">
+  
+              <span class="player__title">Venemy</span>
+              <span class="player__song-time"></span>
+  
+            </span>
+  
+          </p>
+  
+          <audio class="audio" src="need-you-now.mp3"></audio>
+  
+        </li>
     </div>
+  </div>
     <!-- Script -->
-    <script src="scripts/test.js"></script>
+    <script src="scripts/music.js"></script>
   </body>
 </html>

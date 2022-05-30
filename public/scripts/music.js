@@ -1,311 +1,245 @@
 
-const nextButton = document.getElementById('next');
-const playButton = document.getElementById('play');
-const prevButton = document.getElementById("prev");
-const pauseButton = document.getElementById("pause");
-const ACTIVE_CLASS = 'is-active';
+// add all the consts as initial reference
+const bgBody = ["#e5e7e9", "#1C6BA4", "#f8ded3", "#ffc382"];//set up the background transition color
+const body = document.body;
+const player = document.querySelector(".player");
+const playerHeader = player.querySelector(".player__header");
+const playerControls = player.querySelector(".player__controls");
+const playerPlayList = player.querySelectorAll(".player__song");
+const playerSongs = player.querySelectorAll(".audio");
+// querySelector for all btns
+const playButton = player.querySelector(".play");
+const nextButton = player.querySelector(".next");
+const backButton = player.querySelector(".back");
+const playlistButton = player.querySelector(".playlist");
+const slider = player.querySelector(".slider");
+const sliderContext = player.querySelector(".slider__context");
+const sliderName = sliderContext.querySelector(".slider__name");
+const sliderTitle = sliderContext.querySelector(".slider__title");
+const sliderContent = slider.querySelector(".slider__content");
+const sliderContentLength = playerPlayList.length - 1;
+const sliderWidth = 100;
+let left = 0;
+let count = 0; //initially let and count is 0
+let song = playerSongs[count];
+let isPlay = false; //let initial play=flase
+const pauseIcon = playButton.querySelector("img[alt = 'pause-icon']");
+const playIcon = playButton.querySelector("img[alt = 'play-icon']");
+const progres = player.querySelector(".progres");
+const progresFilled = progres.querySelector(".progres__filled");
+let isMove = false;
 
-nextButton.addEventListener('click', () => {
-  let activeTile = document.querySelector('.song-tile.is-active');
-  let nextActiveTile = activeTile.nextElementSibling;
-  activeTile.classList.remove(ACTIVE_CLASS);
-  nextActiveTile.classList.add(ACTIVE_CLASS);
-})
+// creat functions
+function openPlayer() {
 
-playButton.addEventListener('click', () => {
-  //check the next elements if it is existed, play, if not stop.
- if(playButton.classList.contains('is-active')) {
-   
- }
-  let activeAudio = document.querySelector('.song-tile.is-active audio');
-  activeAudio.play();
-})
+    playerHeader.classList.add("open-header");
+    playerControls.classList.add("move");
+    slider.classList.add("open-slider");
+    
+}
 
-prevButton.addEventListener('click', () => {
-  let activeTile = document.querySelector('.song-tile.is-active');
-  let prevActiveTile = activeTile.previousElementSibling;
-  activeTile.classList.remove(ACTIVE_CLASS);
-  prevActiveTile.classList.add(ACTIVE_CLASS);
-})
+function closePlayer() {
 
-pauseButton.addEventListener('click', () => {
- if(pauseButton.classList.contains('is-active')) {
-   
- }
-  let activeAudio = document.querySelector('.song-tile.is-active audio');
-  activeAudio.pause();
-})
+    playerHeader.classList.remove("open-header");
+    playerControls.classList.remove("move");
+    slider.classList.remove("open-slider");
+    
+}
+// Create funtions for next and previous songs, make sure that the next song is the currrent song + 1
+function next(index) {
+    
+    count = index || count;
+
+    if (count == sliderContentLength) {
+        count = count;
+        return;
+    }
+
+    left = (count + 1) * sliderWidth;
+    left = Math.min(left, (sliderContentLength) * sliderWidth);
+    sliderContent.style.transform = `translate3d(-${left}%, 0, 0)`;
+    count++;
+    run();
+
+}
+// And the previous(back) song is the current -1
+function back(index) {
+    
+    count = index || count;
+
+    if (count == 0) {
+        count = count;
+        return;
+    }
+    
+    left = (count - 1) * sliderWidth;
+    left = Math.max(0, left);
+    sliderContent.style.transform = `translate3d(-${left}%, 0, 0)`;
+    count--;
+    run();
+
+}
+// Create the function of the changing slider context
+function changeSliderContext() {
+
+    sliderContext.style.animationName = "opacity";
+    
+    sliderName.textContent = playerPlayList[count].querySelector(".player__title").textContent;
+    sliderTitle.textContent = playerPlayList[count].querySelector(".player__song-name").textContent;
+    
+    if (sliderName.textContent.length > 16) {
+        const textWrap = document.createElement("span");
+        textWrap.className = "text-wrap";
+        textWrap.innerHTML = sliderName.textContent + "   " + sliderName.textContent;  
+        sliderName.innerHTML = "";
+        sliderName.append(textWrap);
+        
+    }
+
+    if (sliderTitle.textContent.length >= 18) {
+        const textWrap = document.createElement("span");
+        textWrap.className = "text-wrap";
+        textWrap.innerHTML = sliderTitle.textContent + "    " + sliderTitle.textContent;  
+        sliderTitle.innerHTML = "";
+        sliderTitle.append(textWrap);
+    }
+
+}
+// bg color if changed as the count
+function changeBgBody() {
+    body.style.backgroundColor = bgBody[count];
+}
+// function of selecting songs from the playlist
+function selectSong() {
+
+    song = playerSongs[count];
+
+    for (const item of playerSongs) {
+
+        if (item != song) {
+            item.pause();
+            item.currentTime = 0;
+        }
+
+    }
+
+    if (isPlay) song.play();
+    
+    
+}
+
+function run() {
+  
+    changeSliderContext();
+    changeBgBody();
+    selectSong();
+  
+}
+// create a function of palysong, if the song is paused, display the pause icon, else dispaly the paly icon
+function playSong() {
+
+    if (song.paused) {
+        song.play();
+        playIcon.style.display = "none"; // the paly icon should be disappeared if the the song is paused
+        pauseIcon.style.display = "block";
+
+    }else{
+        song.pause();
+        isPlay = false;
+        playIcon.style.display = "";
+        pauseIcon.style.display = "";
+    }
 
 
+}
+//Create a progress update function, update progress every second
+function progresUpdate() {
+
+    const progresFilledWidth = (this.currentTime / this.duration) * 100 + "%";
+    progresFilled.style.width = progresFilledWidth;
+
+    if (isPlay && this.duration == this.currentTime) {
+        next();
+    }
+    if (count == sliderContentLength && song.currentTime == song.duration) {
+        playIcon.style.display = "block";
+        pauseIcon.style.display = "";
+        isPlay = false;
+    }
+}
+
+//Format time (convert ms to seconds, minutes and add 0 id less than 10),
+function durationSongs() {
+
+    let min = parseInt(this.duration / 60);
+    if (min < 10) min = "0" + min;
+
+    let sec = parseInt(this.duration % 60);
+    if (sec < 10) sec = "0" + sec;
+   // which then calculate the time of the song 
+    const playerSongTime = `${min}:${sec}`;
+    this.closest(".player__song").querySelector(".player__song-time").append(playerSongTime);
+
+}
 
 
-// //Make a bunch of consts, to create initial references
-// const prevButton = document.getElementById("prev");
-// const nextButton = document.getElementById("next");
-// const repeatButton = document.getElementById("repeat");
-// const shuffleButton = document.getElementById("shuffle");
-// const audio = document.getElementById("audio");
-// const songImage = document.getElementById("song-image");
-// const songName = document.getElementById("song-name");
-// const songArtist = document.getElementById("song-artist");
-// const pauseButton = document.getElementById("pause");
-// const playButton = document.getElementById("play");
-// const playlistButton = document.getElementById("playlist");
-// const maxDuration = document.getElementById("max-duration");
-// const currentTimeRef = document.getElementById("current-time");
-// const progressBar = document.getElementById("progress-bar");
-// const playlistContainer = document.getElementById("playlist-container");
-// const closeButton = document.getElementById("close-button");
-// const playlistSongs = document.getElementById("playlist-songs");
-// const currentProgress = document.getElementById("current-progress");
+changeSliderContext();
 
-// //Use let to make index for songs
-// let index;
+// add click events if the buttons are being clicked
+sliderContext.addEventListener("click", openPlayer);
+sliderContext.addEventListener("animationend", () => sliderContext.style.animationName ='');
+playlistButton.addEventListener("click", closePlayer);
 
-// //initially loop=true
-// let loop = true;
+nextButton.addEventListener("click", () => {
+    next(0)
+});
 
-// //Create an array for song list
-// // const songsList = [
-// //   {
-// //     name: "Make Me Move",
-// //     link: "make-me-move.mp3",
-// //     artist: "Culture Code",
-// //     image: "images/make-me-move.jpg",
-// //   },
-// //   {
-// //     name: "Where We Started",
-// //     link: "where-we-started.mp3",
-// //     artist: "Lost Sky",
-// //     image: "images/where-we-started.jpg",
-// //   },
-// //   {
-// //     name: "On & On",
-// //     link: "on-on.mp3",
-// //     artist: "Cartoon",
-// //     image: "images/on-on.jpg",
-// //   },
-// //   {
-// //     name: "Throne",
-// //     link: "throne.mp3",
-// //     artist: "Rival",
-// //     image: "images/throne.jpg",
-// //   },
-// //   {
-// //     name: "Need You Now",
-// //     link: "need-you-now.mp3",
-// //     artist: "Venemy",
-// //     image: "images/need-you-now.jpg",
-// //   },
-// // ];
+backButton.addEventListener("click", () => {
+    back(0)
+});
 
-// //events object, mouse clicks
-// let events = {
-//   mouse: {
-//     click: "click",
-//   },
-//   touch: {
-//     click: "touchstart",
-//   },
-// };
+playButton.addEventListener("click", () => {
+    isPlay = true;
+    playSong();
+});
 
-// let deviceType = "";
+playerSongs.forEach(song => {
+    song.addEventListener("loadeddata" , durationSongs);
+    song.addEventListener("timeupdate" , progresUpdate);
+    
+});
 
-// //Detect if it is a touch device
+progres.addEventListener("pointerdown", (e) => {
+    scurb(e);
+    isMove = true;
+});
 
-// const isTouchDevice = () => {
-//   try {
-//     //We try to create TouchEvent(it would fail for desktops and throw error)
-//     document.createEvent("TouchEvent");
-//     deviceType = "touch";
-//     return true;
-//   } catch (e) {
-//     deviceType = "mouse";
-//     return false;
-//   }
-// };
+document.addEventListener("pointermove", (e) => {
+    if (isMove) {
+        scurb(e); 
+        song.muted = true;
+    }
+});
 
-// //Format time (convert ms to seconds, minutes and add 0 id less than 10)
-// const timeFormatter = (timeInput) => {
-//   let minute = Math.floor(timeInput / 60);
-//   minute = minute < 10 ? "0" + minute : minute;
-//   let second = Math.floor(timeInput % 60);
-//   second = second < 10 ? "0" + second : second;
-//   return `${minute}:${second}`;
-// };
+document.addEventListener("pointerup", () => {
+    isMove = false;
+    song.muted = false;
+});
+//Creates playlist, and click event for it
+playerPlayList.forEach((item, index) => {
 
-// //set song
-// const setSong = (arrayIndex) => {
-//   //this extracts all the variables from the object
-//   let { name, link, artist, image } = songsList[arrayIndex];
-//   audio.src = link;
-//   songName.innerHTML = name;
-//   songArtist.innerHTML = artist;
-//   songImage.src = image;
-//   //display duration when metadata loads
-//   audio.onloadedmetadata = () => {
-//     maxDuration.innerText = timeFormatter(audio.duration);
-//   };
-// };
+    item.addEventListener("click", function() {
 
-// //play song
-// const playAudio = () => {
-//   audio.play();
-//   pauseButton.classList.remove("hide");
-//   playButton.classList.add("hide");
-// };
+        if (index > count) {
+            next(index - 1);
+            return;
+        }
+        
+        if (index < count) {
+            back(index + 1);
+            return;
+        }
 
-// //repeat button
-// repeatButton.addEventListener("click", () => {
-//   if (repeatButton.classList.contains("active")) {
-//     repeatButton.classList.remove("active");
-//     audio.loop = false;
-//     console.log("repeat off");
-//   } else {
-//     repeatButton.classList.add("active");
-//     audio.loop = true;
-//     console.log("repeat on");
-//   }
-// });
-
-// //Next song
-// const nextSong = () => {
-//   //if loop is true then continue in normal order
-//   if (loop) {
-//     if (index == songsList.length - 1) {
-//       //If last song is being played
-//       index = 0;
-//     } else {
-//       index += 1;
-//     }
-//     setSong(index);
-
-//     playAudio();
-//   } else {
-//     //else find a random index and play that song
-//     let randIndex = Math.floor(Math.random() * songsList.length);
-//     console.log(randIndex);
-//     setSong(randIndex);
-//     playAudio();
-//   }
-// };
-
-//pause song
-// const pauseAudio = () => {
-//   audio.pause();
-//   pauseButton.classList.add("hide");
-//   playButton.classList.remove("hide");
-// };
-
-// //previous song ( you can't go back to a randomly played song)
-// const previousSong = () => {
-//   if (index > 0) {
-//     pauseAudio();
-//     index -= 1;
-//   } else {
-//     //if first song is being played
-//     index = songsList.length - 1;
-//   }
-//   setSong(index);
-//   playAudio();
-// };
-
-// //next song when current song ends
-// audio.onended = () => {
-//   nextSong();
-// };
-
-// //Shuffle songs
-// shuffleButton.addEventListener("click", () => {
-//   if (shuffleButton.classList.contains("active")) {
-//     shuffleButton.classList.remove("active");
-//     loop = true;
-//     console.log("shuffle off");
-//   } else {
-//     shuffleButton.classList.add("active");
-//     loop = false;
-//     console.log("shuffle on");
-//   }
-// });
-
-// //play button
-// playButton.addEventListener("click", playAudio);
-
-// //next button
-// nextButton.addEventListener("click", nextSong);
-
-// //pause button
-// pauseButton.addEventListener("click", pauseAudio);
-
-// //prev button
-// prevButton.addEventListener("click", previousSong);
-
-// //if user clicks on progress bar
-// isTouchDevice();
-// progressBar.addEventListener(events[deviceType].click, (event) => {
-//   //start of progressBar
-//   let coordStart = progressBar.getBoundingClientRect().left;
-//   //mouse click position
-//   let coordEnd = !isTouchDevice() ? event.clientX : event.touches[0].clientX;
-//   let progress = (coordEnd - coordStart) / progressBar.offsetWidth;
-
-//   //set width to progress
-//   currentProgress.style.width = progress * 100 + "%";
-
-//   //set time
-//   audio.currentTime = progress * audio.duration;
-
-//   //play
-//   audio.play();
-//   pauseButton.classList.remove("hide");
-//   playButton.classList.add("hide");
-// });
-
-// //update progress every second
-// setInterval(() => {
-//   currentTimeRef.innerHTML = timeFormatter(audio.currentTime);
-//   currentProgress.style.width =
-//     (audio.currentTime / audio.duration.toFixed(3)) * 100 + "%";
-// });
-
-// //update time
-// audio.addEventListener("timeupdate", () => {
-//   currentTimeRef.innerText = timeFormatter(audio.currentTime);
-// });
-
-// //Creates playlist
-// const initializePlaylist = () => {
-//   for (let i in songsList) {
-//     playlistSongs.innerHTML += `<li class='playlistSong' onclick='setSong(${i})'>
-//             <div class="playlist-image-container">
-//                 <img src="${songsList[i].image}"/>
-//             </div>
-//             <div class="playlist-song-details">
-//                 <span id="playlist-song-name">
-//                     ${songsList[i].name}
-//                 </span>
-//                 <span id="playlist-song-artist-album">
-//                     ${songsList[i].artist}
-//                 </span>
-//             </div>
-//         </li>`;
-//   }
-// };
-
-// //display playlist
-// playlistButton.addEventListener("click", () => {
-//   playlistContainer.classList.remove("hide");
-// });
-
-// //hide playlist
-// closeButton.addEventListener("click", () => {
-//   playlistContainer.classList.add("hide");
-// });
-
-// window.onload = () => {
-//   //initially first song
-//   index = 0;
-//   setSong(index);
-//   //create playlist
-//   initializePlaylist();
-// };
+    });
+    
+});
