@@ -14,11 +14,13 @@ On the Home page, based on users' feedback, I know that the "add task button" is
 
 Also, make the competition status more evident by adding a small circle in front of each task; if the user completes the task, they could simply press the circle, and the whole task would be marked out. With the "more" icon, users could edit and delete the tasks. In the last round of usability testing, users suggested that the task list was not obvious enough, so I changed the background colour from white to a gradient #1C6BA4 to match the central theme; in contrast, the task list would be more focused. Based on the participants' feedback in the last interview, I added one more clear all button if users finish all the tasks and would like to clear all of them at once. The home page code was inspired and taught by the knowledge we learned in the class and some online coding tutorials. For example, the Easytutorials for the navigation bar(Easytutorials, 2022) and Coding Nepal for the task list(CodingNepal, 2022) from the Youtube channel. Here is how the previous mock-up compared to the web application. 
 
+![home](https://user-images.githubusercontent.com/75123393/171645171-8dcb24ba-b288-472a-a5f8-471cab143716.png)
+
 The design of the music page iterated a lot based on several rounds of usability testing. Most of the participants felt confused about where could they find out the song list to choose different songs in the mock-up. And also, the like button would be useless, as there is no container for the liked songs. Therefore, I made a song list hidden by a small "below" button. However, most users still ignored the button while I tested it out in the think-aloud process. Thus I changed the overall structure of the player; instead of using the single music player interface, I combined the current playing song and the song list together on one page, so users could switch between their favourite songs at will without disturbing their attention to studies(As they don't have to navigate to another page) which improved the flexibility and efficiency of use. The code of this page was initially inspired by the online coding tutorial called Coding Artist(Coding Artist, 2022); however, the code I learned could not work for my design goal; thus, I changed all of them based on some research and help from my tutors. All the music and pictures used here for music are retrieved from the NCS(NoCopyrightSounds) website(https://ncs.io/).  
 
 The mock-up of the timer page also has too many details that would be distracting. Therefore, based on the tutor and users' feedback, to make the page clean and more straightforward, I made the timer look like a tomato by adjusting the CSS, so it could be more exciting and fit the theme Pomodoro timer to remain consistent. Also, instead of having three buttons to represent the "play", "pause", and "reset",  I set the play and pause function on the same button, whether "start" or "stop", which makes the page cleaner and consistent. Also, I added one set button at the bottom of the timer, and if users press the button, they can reset it any time they want by adjusting the numbers straightly. Finally, in the end, I added the back button on all the pages to allow users to remain in control of the system and avoid getting stuck and feeling frustrated. 
 
-
+![music](https://user-images.githubusercontent.com/75123393/171645371-ffa60595-932f-4277-a8ee-e531d1f26382.png)
 
 
 
@@ -31,7 +33,11 @@ DarkCode. (2019, January 11). 4 Awesome icons hover effect using only HTML & CSS
 
 Easytutorials. (2022, January 17). How To Make Responsive Social Network Website Design Using HTML And CSS | Part 3. Retrieved June 2, 2022, from www.youtube.com website: https://www.youtube.com/watch?v=wIvbG3GFje8
 
+Estudar | Ícone Gratis. (n.d.). Retrieved June 2, 2022, from Freepik website: https://br.freepik.com/icones-gratis/estudar_14853175.htm
+
 Font Awesome 5. (2017). Font Awesome 5. Retrieved from Fontawesome.com website: https://fontawesome.com/
+
+Google Voice Assistant Icon, HD Png Download(1394x1394) - PinPng. (n.d.). Retrieved from Pinpng.com website: https://www.pinpng.com/picture/hoiwTi_google-voice-assistant-icon-hd-png-download/
 
 html - Space between link and icon, fontawesome. (n.d.). Retrieved June 1, 2022, from Stack Overflow website: https://stackoverflow.com/questions/27969485/space-between-link-and-icon-fontawesome
 
