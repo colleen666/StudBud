@@ -12,6 +12,7 @@ const playButton = player.querySelector(".play");
 const nextButton = player.querySelector(".next");
 const backButton = player.querySelector(".back");
 const playlistButton = player.querySelector(".playlist");
+// create const of the sldier of the player
 const slider = player.querySelector(".slider");
 const sliderContext = player.querySelector(".slider__context");
 const sliderName = sliderContext.querySelector(".slider__name");
@@ -29,7 +30,7 @@ const progres = player.querySelector(".progres");
 const progresFilled = progres.querySelector(".progres__filled");
 let isMove = false;
 
-// creat functions
+// creat openplayer function, if navigate to the player, the header, controls and slider appear
 function openPlayer() {
 
     playerHeader.classList.add("open-header");
@@ -37,7 +38,7 @@ function openPlayer() {
     slider.classList.add("open-slider");
     
 }
-
+// if close the player, the header, controlsm and slider would be removed
 function closePlayer() {
 
     playerHeader.classList.remove("open-header");
@@ -46,11 +47,11 @@ function closePlayer() {
     
 }
 // Create funtions for next and previous songs, make sure that the next song is the currrent song + 1
-function next(index) {
+function next(index) { //  make index for songs
     
     count = index || count;
 
-    if (count == sliderContentLength) {
+    if (count == sliderContentLength) { 
         count = count;
         return;
     }
